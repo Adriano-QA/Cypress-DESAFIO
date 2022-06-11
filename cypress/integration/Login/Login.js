@@ -1,14 +1,24 @@
 import signupPage from '../../pages/SignUpPage'
 
 describe('Sign In', () => {
-    it.only('Login with an existing user', function () {
+    it('Login with an existing user', function () {
 
         signupPage.go()
-        cy.get('#nav-flyout-ya-signin > .nav-action-button > .nav-action-inner').click()
         signupPage.formLogin()
-        cy.get('#signInSubmit').click()
 
-        const message = 'Verificar o endereço de e-mail'
-        signupPage.MessageShouldBeValidation(message)
-    })
+    }),
+
+    it.only('Make a purchase', () => {
+        
+        signupPage.go()
+        signupPage.formLogin()
+        cy.xpath("//img[@alt='SSD A400, Kingston, SA400S37/240G, Cinza']").click()
+        cy.get('#buy-now-button').click()
+        
+        
+        // .then(($dialog)=>{
+        //     cy.wrap($dialog).find("//span[@class='a-button-inner']/span[contains(., 'crédito')]")
+        //     });
+        signupPage.creditCardData()
+    });
 })

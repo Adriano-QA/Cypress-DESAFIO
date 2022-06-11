@@ -13,7 +13,8 @@ export default {
             cpf: cpf.generate(),
             email: faker.internet.email(firstName),
             telefone: '19999999999',
-            password: 'adrianoteste'
+            password: 'adrianoteste',
+           
         }
 
         return data

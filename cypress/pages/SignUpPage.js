@@ -19,9 +19,20 @@ class SignupPage {
     }
 
     formLogin() {
+        cy.get('#nav-flyout-ya-signin > .nav-action-button > .nav-action-inner').click()
         cy.get('#ap_email').type('teste_ecommerce@hotmail.com')
         cy.get('.a-button-inner > #continue').click()
         cy.get('#ap_password').type('adrianoteste')
+        cy.wait(2000)
+        cy.get('#signInSubmit').click()
+        cy.xpath("//h2[contains(., 'Ofertas')]").should('contain', 'Ofertas')
+    }
+
+    creditCardData(customer) {
+        cy.xpath("//span[@class='a-button-inner']/span[contains(., 'crédito')]").should('be.visible').click({force:true}).type(123123)
+        cy.xpath("//div[@class='a-popover a-popover-modal a-declarative']").should('be.visible').click({force:true}).type(123123)
+
+
     }
 
     
