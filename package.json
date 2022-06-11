@@ -10,6 +10,9 @@
   "author": "Adriano Aluizi",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^9.7.0"
+    "@faker-js/faker": "^5.5.3",
+    "cypress": "^9.7.0",
+    "cypress-xpath": "^1.6.2",
+    "gerador-validador-cpf": "^5.0.2"
   }
 }
