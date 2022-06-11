@@ -7,10 +7,10 @@ class SignupPage {
         cy.get('#nav-flyout-accountList').should('not.be.visible')
         cy.get('#nav-link-accountList').trigger('mouseover')
         cy.get('#nav-flyout-accountList').should('be.visible')
-        cy.xpath("//div[@id='nav-flyout-ya-newCust']/a").click()
     }
 
     fillForm(customer) {
+        cy.xpath("//div[@id='nav-flyout-ya-newCust']/a").click()
         cy.get('#ap_customer_name').type(customer.name)
         cy.get('#ap_email').type(customer.email)
         cy.get('#ap_password').type(customer.password)
@@ -18,20 +18,10 @@ class SignupPage {
 
     }
 
-    fillFormNotValidation(deliver) {
-        cy.get('input[name="name"]').type(deliver.name)
-        cy.get('input[name="cpf"]').type(deliver.cpf)
-        cy.get('input[name="email"]').type(deliver.email)
-        cy.get('input[name="whatsapp"]').type(deliver.whatsapp)
-
-        cy.get('input[name="postalcode"]').type(deliver.address.postalcode)
-        cy.get('input[type=button][value="Buscar CEP"]').click()
-
-        cy.get('input[name="address-number"]').type(deliver.address.number)
-        cy.get('input[name="address-details"]').type(deliver.address.details)
-
-        cy.contains('.delivery-method li', deliver.delivery_method).click()
-        cy.get('input[accept^="image"]').attachFile('/images/' + deliver.cnh)
+    formLogin() {
+        cy.get('#ap_email').type('teste_ecommerce@hotmail.com')
+        cy.get('.a-button-inner > #continue').click()
+        cy.get('#ap_password').type('adrianoteste')
     }
 
     
@@ -41,7 +31,11 @@ class SignupPage {
     }
 
     MessageShouldBeValidation(message) {
-        cy.contains('.a-spacing-small > h1', message).should('be.visible')
+        cy.get('.a-spacing-small > h1', message).should('contain', message)
+    }
+
+    MessageEmptyFields(message) {
+        cy.xpath("//div[@class='a-alert-content']").should('have.text', message)
     }
 
 
