@@ -1,0 +1,15 @@
+{
+  "name": "keyrus",
+  "version": "1.0.0",
+  "description": "Desafio de automação de fluxo de compra de um e-commerce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "npx cypress open"
+  },
+  "author": "Adriano Aluizi",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^9.7.0"
+  }
+}
