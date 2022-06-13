@@ -28,10 +28,13 @@ class SignupPage {
         cy.xpath("//h2[contains(., 'Ofertas')]").should('contain', 'Ofertas')
     }
 
-    creditCardData(customer) {
-        cy.xpath("//span[@class='a-button-inner']/span[contains(., 'crédito')]").should('be.visible').click({force:true}).type(123123)
-        cy.xpath("//div[@class='a-popover a-popover-modal a-declarative']").should('be.visible').click({force:true}).type(123123)
-
+    creditCardData() {
+        cy.xpath("//span[@class='a-button-inner']/span[contains(., 'crédito')]").should('be.visible').click({force:true})
+        cy.wait(4000)
+        cy.get('iframe').then(iframe => {
+            const body= iframe.contents().find('body')
+            cy.wrap(body).find('input[name="addCreditCardNumber"]').type(56)
+        })
 
     }
 
