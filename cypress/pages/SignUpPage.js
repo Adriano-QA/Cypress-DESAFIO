@@ -33,9 +33,18 @@ class SignupPage {
         cy.wait(4000)
         cy.get('iframe').then(iframe => {
             const body= iframe.contents().find('body')
-            cy.wrap(body).find('input[name="addCreditCardNumber"]').type(56)
+            cy.wrap(body).find('input[name="addCreditCardNumber"]').type(4706905463020965)
+            cy.wrap(body).find('input[name="ppw-accountHolderName"]').type('Adriano Teste')
+            cy.wrap(body).find('input[name="addCreditCardVerificationNumber"]').type(705)
+            cy.wrap(body).find('select[name="ppw-expirationDate_year"]').select('2025',{force: true})
+            cy.wrap(body).find('input[name="ppw-widgetEvent:AddCreditCardEvent"]').click()
+            cy.wait(4000)
         })
-
+        //cy.xpath("//span[@id='pp-vPjb1p-77']").click()
+        cy.xpath("//span[@class='a-button a-button-span12 a-button-primary pmts-button-input']").eq(0).click({multiple:true})
+        cy.xpath("//span[@class='a-button-inner']/a[contains(., 'Utilize')]").should('contain', 'Utilize este endereço').click()
+        cy.xpath("//span[@class='a-button-inner a-button-span12 ']").click()
+        cy.xpath("//div[@class='a-box-inner a-alert-container']/h4[contains(., 'Pedido feito')]").should('contain', 'Pedido feito')
     }
 
     
