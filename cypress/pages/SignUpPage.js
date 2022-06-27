@@ -57,7 +57,7 @@ class SignupPage {
     }
 
     MessageShouldBeValidation(message) {
-        cy.get('.a-spacing-small > h1', message).should('contain', message)
+        cy.get('.a-spacing-small > h1').should('contain', message)
     }
 
     MessageEmptyFields(message) {
