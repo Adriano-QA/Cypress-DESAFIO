@@ -12,13 +12,8 @@ describe('Sign In', () => {
         
         signupPage.go()
         signupPage.formLogin()
-        cy.xpath("//img[@alt='SSD A400, Kingston, SA400S37/240G, Cinza']").click()
+        cy.xpath("//span[contains(., 'SSD A400, Kingston, SA400S37/240G, Preto')]").eq(0).click({mutiple: true})
         cy.get('#buy-now-button').click()
-        
-        
-        // .then(($dialog)=>{
-        //     cy.wrap($dialog).find("//span[@class='a-button-inner']/span[contains(., 'crédito')]")
-        //     });
         signupPage.creditCardData()
     });
 })
